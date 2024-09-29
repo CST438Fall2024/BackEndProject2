@@ -32,4 +32,14 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(User user){
         userRepo.delete(user);
     }
+
+    public boolean loginUser(User user){
+        User foundUser =  userRepo.login(user.getUsername(), user.getPassword());
+
+        if(foundUser != null){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
