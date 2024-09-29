@@ -33,4 +33,12 @@ public class UserController {
     public List<User> getAll() {
         return userService.getAllUsers();
     }
+
+    @DeleteMapping("/delete")
+    public String deleteUser(@RequestBody User user){
+        int userID = user.getUserID();
+        userService.deleteUser(user);
+        return "User with ID " + userID + " deleted successfully";
+    }
+
 }
