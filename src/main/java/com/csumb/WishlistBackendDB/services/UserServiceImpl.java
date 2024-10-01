@@ -28,4 +28,18 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         return userRepo.findAll(); //JPA repository function to get all Users in the db
     }
+
+    public void deleteUser(User user){
+        userRepo.delete(user);
+    }
+
+    public boolean loginUser(User user){
+        User foundUser =  userRepo.login(user.getUsername(), user.getPassword());
+
+        if(foundUser != null){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }

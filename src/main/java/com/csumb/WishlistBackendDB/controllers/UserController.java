@@ -33,4 +33,24 @@ public class UserController {
     public List<User> getAll() {
         return userService.getAllUsers();
     }
+
+    //DELETE method to delete a user
+    @DeleteMapping("/delete")
+    public String deleteUser(@RequestBody User user){
+        int userID = user.getUserID();
+        userService.deleteUser(user);
+        return "User with ID " + userID + " deleted successfully";
+    }
+
+    //POST method to check login credentials
+    @PostMapping("/login")
+    public String loginUser(@RequestBody User user){
+        boolean userExists = userService.loginUser(user);
+        if (userExists){
+            return "Logging in user";
+        }else{
+            return "Can't find user with username: " + user.getUsername() + " password: " + user.getPassword();
+        }
+    }
+
 }
