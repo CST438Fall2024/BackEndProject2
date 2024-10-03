@@ -23,6 +23,12 @@
   <li>
     <a href="#Apis">Api's Used</a>
   </li>
+   <li>
+    <a href="#Erd">ERD</a>
+  </li>
+   <li>
+    <a href="#roadmap">Roadmap</a>
+  </li>
 </ul>
 <hr>
 <!-- The project contributors include backend and front-end developers. This also includes links to their GitHub profiles.-->
@@ -49,6 +55,9 @@
   <li>
     <p>Heroku</p>
   </li>
+   <li>
+    <p>SprintBoot</p>
+  </li>
   <li>
     <p>ReactJs</p>
   </li>
@@ -66,6 +75,9 @@
 </ul>
 
 <hr>
+
+<h2 id="Erd">ERD</h2> 
+
 
 <!-- Roadmap for the project -->
 <h2 id ="roadmap">Roadmap</h2>
