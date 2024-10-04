@@ -42,4 +42,14 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
+    public User getUserInfo(int id){
+        return userRepo.findById(id);
+    }
+
+    public int editUser(User user){
+
+        return userRepo.update(user.getUsername(), user.getPassword(), user.getUserID());
+
+    }
 }
