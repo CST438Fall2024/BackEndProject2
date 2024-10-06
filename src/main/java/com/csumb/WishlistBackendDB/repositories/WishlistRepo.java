@@ -1,6 +1,6 @@
 package com.csumb.WishlistBackendDB.repositories;
 
-import com.csumb.WishlistBackendDB.models.Item;
+
 import com.csumb.WishlistBackendDB.models.Wishlist;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
