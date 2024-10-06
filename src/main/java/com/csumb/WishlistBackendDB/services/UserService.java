@@ -14,4 +14,6 @@ public interface UserService {
     public List<User> getAllUsers();
     public void deleteUser(User user);
     public boolean loginUser(User user);
+    public  User getUserInfo(int id);
+    public int editUser(User user);
 }
