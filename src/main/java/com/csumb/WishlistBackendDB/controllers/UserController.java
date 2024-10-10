@@ -53,4 +53,17 @@ public class UserController {
         }
     }
 
+    @GetMapping("/info/{id}")
+    public User userInfo(@PathVariable("id") int id) {
+        return userService.getUserInfo(id);
+    }
+
+    @PutMapping("/edit")
+    public String editUser(@RequestBody User user) {
+        if(userService.editUser(user) > 0) {
+            return "User edited successfully";
+        }
+        return "Can't find user with username: " + user.getUsername() + " password: " + user.getPassword();
+    }
+
 }
