@@ -16,5 +16,6 @@ ENV db_url="jdbc:mysql://c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.c
 ENV db_username="f2vju459mp652zxw"
 ENV db_password="imzbufv1tqr959eg"
 
-# Run the jar file when the container starts
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+# Run the jar file when the container starts, use Heroku's dynamically provided port
+ENTRYPOINT ["java", "-jar", "/app.jar", "--server.port=${PORT}"]
