@@ -8,14 +8,14 @@ VOLUME /tmp
 ARG JAR_FILE=build/libs/WishlistBackendDB-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 
-# Expose the application port
-EXPOSE 8080
 
 # Set environment variables for the database connection
 ENV db_url="jdbc:mysql://c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/v4hbf09hn2uv0gfc?useSSL=false&serverTimezone=UTC"
 ENV db_username="f2vju459mp652zxw"
 ENV db_password="imzbufv1tqr959eg"
 
+EXPOSE $PORT
+
 
 # Run the jar file when the container starts, use Heroku's dynamically provided port
-ENTRYPOINT ["java", "-jar", "/app.jar", "--server.port=${PORT}"]
+CMD java -jar /app.jar --server.port=$PORT
