@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  backend-project2:
+  web:
     image: backend-project2:latest
     ports:
       - "8080:8080"  # Maps the container's port 8080 to the host's port 8080
