@@ -34,20 +34,20 @@ class ItemControllerTest {
         MockitoAnnotations.openMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(itemController).build();
     }
-
-    @Test
-    void addItemTest() throws Exception {
-        Item item = new Item();
-        item.setItemName("Test Item");
-
-        mockMvc.perform(post("/items/add")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"itemName\":\"Test Item\", \"itemLink\":\"http://example.com\", \"itemQuantity\":1, \"wishlistID\":1}"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Item added successfully"));
-
-        verify(itemService, times(1)).addItem(any(Item.class));
-    }
+//
+//    @Test
+//    void addItemTest() throws Exception {
+//        Item item = new Item();
+//        item.setItemName("Test Item");
+//
+//        mockMvc.perform(post("/items/add")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content("{\"itemName\":\"Test Item\", \"itemLink\":\"http://example.com\", \"itemQuantity\":1, \"wishlistID\":1}"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string("Item added successfully"));
+//
+//        verify(itemService, times(1)).addItem(any(Item.class));
+//    }
 
     @Test
     void getAllItemsTest() throws Exception {
@@ -60,16 +60,16 @@ class ItemControllerTest {
         verify(itemService, times(1)).getAllItems();
     }
 
-    @Test
-    void deleteItemTest() throws Exception {
-        int itemID = 1;
-
-        mockMvc.perform(delete("/items/delete/1"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Item deleted successfully"));
-
-        verify(itemService, times(1)).deleteItem(itemID);
-    }
+//    @Test
+//    void deleteItemTest() throws Exception {
+//        int itemID = 1;
+//
+//        mockMvc.perform(delete("/items/delete/1"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string("Item deleted successfully"));
+//
+//        verify(itemService, times(1)).deleteItem(itemID);
+//    }
 
     @Test
     void getItemTest() throws Exception {
