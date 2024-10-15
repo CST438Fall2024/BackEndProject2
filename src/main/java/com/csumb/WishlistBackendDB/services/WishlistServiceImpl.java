@@ -1,5 +1,6 @@
 package com.csumb.WishlistBackendDB.services;
 
+import com.csumb.WishlistBackendDB.models.Item;
 import com.csumb.WishlistBackendDB.models.Wishlist;
 import com.csumb.WishlistBackendDB.repositories.WishlistRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,13 @@ public class WishlistServiceImpl implements WishlistService{
         return wishlistRepo.update(wishlist.getWishlistName(), wishlist.getDescription(), wishlist.getWishlistID());
     }
 
+    @Override
+    public List<Wishlist> searchWishlistByUser(int userID) {
+        return wishlistRepo.findWishlistsByUser(userID);
+    }
 
+    @Override
+    public List<Item> getWishlistItems(int wishlistID) {
+        return wishlistRepo.findItemsByWishlistID(wishlistID);
+    }
 }

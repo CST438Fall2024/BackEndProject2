@@ -14,8 +14,13 @@ public class ItemServiceImpl implements ItemService {
     private ItemRepo itemRepo;
 
     @Override
-    public Item addItem(Item item) {
-        return itemRepo.save(item);
+    public boolean addItem(Item item) {
+        try {
+            itemRepo.save(item);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
@@ -24,12 +29,17 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void deleteItem(int itemID) {
-        itemRepo.deleteByItemID(itemID);
+    public int deleteItem(int itemID) {
+        return itemRepo.deleteByItemID(itemID);
     }
 
     @Override
     public Item getItem(int itemID) {
         return itemRepo.findByItemID(itemID);
+    }
+
+    @Override
+    public int editItem(Item item) {
+        return itemRepo.update(item.getItemName(), item.getItemLink(), item.getItemQuantity(), item.getItemID());
     }
 }
