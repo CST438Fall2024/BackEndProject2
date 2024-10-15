@@ -1,6 +1,7 @@
 package com.csumb.WishlistBackendDB.controllers;
 
 
+import com.csumb.WishlistBackendDB.models.Item;
 import com.csumb.WishlistBackendDB.models.Wishlist;
 import com.csumb.WishlistBackendDB.services.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,18 @@ public class WishlistController {
         return "Can't update wishlist!";
 
     }
+
+    @GetMapping("/by/{userID}")
+    public List<Wishlist>allWishListsByUser(@PathVariable("userID") int userID){
+        return wishlistService.searchWishlistByUser(userID);
+    }
+
+    @GetMapping("/{wishlistID}/items")
+    public List<Item>allItemsByWishlistID(@PathVariable("wishlistID") int wishlistID){
+        return wishlistService.getWishlistItems(wishlistID);
+    }
+
+
+
 
 }
