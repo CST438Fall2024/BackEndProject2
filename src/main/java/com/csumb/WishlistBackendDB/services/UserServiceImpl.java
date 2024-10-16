@@ -3,6 +3,7 @@ package com.csumb.WishlistBackendDB.services;
 import com.csumb.WishlistBackendDB.models.User;
 import com.csumb.WishlistBackendDB.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +21,12 @@ public class UserServiceImpl implements UserService {
     private UserRepo userRepo; //An instance of UserRepo lets us get an instance of our database
                                // and access to predefined JPA repository functions since userRepo extends it
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public User addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user); //.save is a JPA repository function that lets us easily add an object to our database
     }
 
@@ -36,7 +41,7 @@ public class UserServiceImpl implements UserService {
     public boolean loginUser(User user){
         User foundUser =  userRepo.login(user.getUsername(), user.getPassword());
 
-        if(foundUser != null){
+        if(foundUser != null && passwordEncoder.matches(user.getPassword(), foundUser.getPassword())){
             return true;
         }else {
             return false;
