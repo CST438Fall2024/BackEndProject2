@@ -2,6 +2,7 @@ package com.csumb.WishlistBackendDB.controllers;
 
 import com.csumb.WishlistBackendDB.models.User;
 import com.csumb.WishlistBackendDB.services.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,9 +45,17 @@ public class UserController {
 
     //POST method to check login credentials
     @PostMapping("/login")
-    public String loginUser(@RequestBody User user){
+    public String loginUser(@RequestBody User user, HttpSession session) {
+
         boolean userExists = userService.loginUser(user);
+
+
+        System.out.println("user name passed in = " + user.getUsername());
+        System.out.println("user name passed in = " + user.getPassword());
+
+
         if (userExists){
+            session.setAttribute("username", user.getUsername()); // store username
             return "Logging in user";
         }else{
             return "Can't find user with username: " + user.getUsername() + " password: " + user.getPassword();
