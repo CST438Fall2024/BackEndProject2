@@ -39,7 +39,9 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean loginUser(User user){
-        User foundUser =  userRepo.login(user.getUsername(), user.getPassword());
+        User foundUser =  userRepo.findUserByUsername(user.getUsername());
+
+        System.out.println("found user is: " + foundUser);
 
         if(foundUser != null && passwordEncoder.matches(user.getPassword(), foundUser.getPassword())){
             return true;
